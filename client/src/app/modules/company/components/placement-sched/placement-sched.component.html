@@ -1,0 +1,147 @@
+
+<div class="container-fluid" id="addnews">
+    <mat-card>
+        <div class="container">
+            <form [formGroup]="pScheduleForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-md-12 heading">
+                    <h2 style="color:whitesmoke;">Placement Schedule</h2>
+                </div>
+            </div>
+            <br>
+
+            <fieldset class="scheduler-border">
+                <legend class="scheduler-border">Placement Schedule</legend>
+                <div class="control-group">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <mat-form-field appearance="outline" class="inputfieldsize">
+                                <mat-label>Vacancy </mat-label>
+                                <mat-select formControlName="Vacancy_ID">
+                                  <mat-option *ngFor="let c of vacancy ;" [value]="c.Vacancy_ID" >
+                                    {{c.Job_Title}}
+                                  </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-3">
+                            <mat-form-field appearance="outline" class="inputfieldsize">
+                                <mat-label>Company</mat-label>
+                                <mat-select formControlName="Company_ID">
+                                  <mat-option *ngFor="let c of company ;" [value]="c.Company_ID" >
+                                    {{c.Name}}
+                                  </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-3">
+                            <mat-form-field color="accent" appearance="outline" class="inputfieldsize">
+                                <mat-label>Placement Date</mat-label>
+                                <input matInput [matDatepicker]="picker" formControlName="Placement_Date">
+                                <mat-hint>DD/MM/YYYY</mat-hint>
+                                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                              </mat-form-field>
+                        </div>
+                        <div class="col-md-3">
+                            <mat-form-field appearance="outline" class="inputfieldsize">
+                                <mat-label>
+                                 Placement Venue
+                                </mat-label>
+                                <input matInput placeholder="Placement Veneu" formControlName="Placement_Venue">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                        
+                    
+                </div>
+               <br>
+                <div class="row">
+                    <div class="col offset-5">
+                        <button mat-raised-button  type="button" (click)="onClear()">
+                            Clear
+                        </button> &nbsp;&nbsp; 
+                        <button mat-raised-button color="primary"  *ngIf="!iseditmode" type="submit">
+                            Submit
+                        </button>
+                        <button mat-raised-button color="primary"  *ngIf="iseditmode" (click)="onupdate()" type="button">
+                            Update
+                        </button>
+    
+                </div>
+                </div>
+            </fieldset>
+</form>  
+    </div>
+    </mat-card>
+</div> <br><br>
+
+
+
+<!-- mat table -->
+<div class="container-fluid">
+    <mat-card style="margin-bottom: 40px;">
+
+        <mat-toolbar>
+            <p><span ><h5 class="title">All Scheduled Placements</h5></span> </p>
+        </mat-toolbar>
+       <div class="container ">
+  <div class="row table-responsive">
+    
+    <div class="search_container mt-2" >
+        <mat-form-field class="example-full-width">
+        <span matPrefix> </span>
+        <input type="tel" matInput placeholder="Search" autocomplete="off" (keyup)="applyFilter($event)" >
+        <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+    </div>
+
+    <table class="con-table" mat-table matSort [dataSource]="dataSource" >
+           
+        <ng-container matColumnDef="Company_ID">
+            <th mat-sort-header mat-header-cell *matHeaderCellDef> ID </th>
+            <td mat-cell *matCellDef="let element">{{element.Company_ID}}</td>
+          </ng-container>
+        <ng-container matColumnDef="Name">
+          <th mat-sort-header mat-header-cell *matHeaderCellDef>COMPANY NAME </th>
+          <td mat-cell *matCellDef="let element">{{element.Name}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Job_Title">
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>JOB TITLE</th>
+            <td mat-cell *matCellDef="let element"> {{element.Job_Title}} </td>
+          </ng-container>
+          <ng-container matColumnDef="Placement_Date">
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>PLACEMENT DATE</th>
+            <td mat-cell *matCellDef="let element"> {{element.Placement_Date | date :'dd/MM/YYYY'}} </td>
+          </ng-container>
+          <ng-container matColumnDef="Placement_Venue">
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>VENEU </th>
+            <td mat-cell *matCellDef="let element"> {{element.Placement_Venue}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Action">
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let element"> 
+                <button mat-icon-button color="primary" (click)="onedit(element.Placement_Schedule_ID)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="ondelete(element.Placement_Schedule_ID)" >
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+          </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+<br>
+      <mat-paginator class="paging"
+              [pageSize]="5"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
+     </mat-paginator>
+</div>
+</div>
+    </mat-card>
+</div>
+

@@ -1,0 +1,93 @@
+<app-header></app-header>
+ <div class="container-fluid" style="border-top: 2px solid rgb(31, 31, 31); height: 100vh; margin-top: 15vh;">
+  <div class="signup ">
+    <div class="row" [style.width.%]="100">
+      <div class="mainheading">
+        <h2>SignUp Here</h2>
+      </div>
+    </div>
+
+    <form [formGroup]="signupForm" class="login-form" >
+      <div class="row" [style.width.%]="100" >
+        <mat-form-field appearance="outline">
+          <input type="text" matInput placeholder="Username" formControlName="User_Name">
+          <mat-error
+            *ngIf="this.signupForm.get('User_Name')?.touched && this.signupForm.get('User_Name')?.hasError('required')">
+            Username is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row" [style.width.%]="100">
+        <mat-form-field appearance="outline">
+          <input type="email" matInput placeholder="Email" formControlName="Email">
+          <!-- Here we can display error messages/hints for the user, if one of the Validators adds an error to the email 
+       with the .touched check we only display the hints if the input was touched by the users -->
+          <mat-error
+            *ngIf="this.signupForm.get('Email')?.touched && this.signupForm.get('Email')?.hasError('required')">
+            Email is required</mat-error>
+          <mat-error
+            *ngIf="this.signupForm.get('Email')?.touched && this.signupForm.get('Email')?.hasError('email')">
+            Email must be a valid Email</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="row" [style.width.%]="100">
+        <mat-form-field appearance="outline">
+          <input type="password" matInput placeholder="Password" formControlName="Password">
+          <mat-error
+            *ngIf="this.signupForm.get('Password')?.touched && this.signupForm.get('Password')?.hasError('required')">
+            Password is required</mat-error>
+        </mat-form-field>
+        <div *ngIf="this.signupForm.get('Password')?.touched && this.signupForm.get('Password')?.hasError('pattern')" class="row">
+          <span style="text-align: left; color: rgb(208, 43, 43);">*नोट- पासवर्ड का प्रारूप कम से कम 8 अक्षर, एक बड़ा अक्षर, एक संख्या (0-9),एक विशेष वर्ण ($@$!%*?&) होना अनिवार्य है</span>
+      </div>
+      </div>
+
+      <div class="row" [style.width.%]="100">
+        <mat-form-field appearance="outline">
+          <input type="password" matInput placeholder="Confirm Password" formControlName="passwordConfirm">
+          <mat-error
+            *ngIf="this.signupForm.get('passwordConfirm')?.touched && this.signupForm.get('passwordConfirm')?.hasError('required')">
+            Password Confirmation is required</mat-error>
+        </mat-form-field>
+
+        <mat-error
+          *ngIf="this.signupForm.get('passwordConfirm')?.dirty && this.signupForm.hasError('passwordsNotMatching')">
+          Passwords are not matching!</mat-error>
+      </div>
+
+      <div class="row" [style.width.%]="100">
+        <mat-form-field appearance="outline">
+          <!-- <input type="password" matInput placeholder="Role" formControlName="role"> -->
+          <mat-label>Choose a Role</mat-label>
+          <mat-select formControlName="Role" >
+            <mat-option value="2">Student</mat-option>
+            <mat-option value="3">Company</mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="this.signupForm.get('Role')?.touched && this.signupForm.get('Role')?.hasError('required')">
+            Role is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row" [style.width.%]="100">
+        <div class="login">
+          <a [routerLink]="['../login']">Go to Login</a>
+
+        </div>
+      </div>
+
+
+
+      <div class="row" [style.width.%]="100">
+        
+        <button type="submit" mat-raised-button color="primary" [disabled]="!signupForm.valid" (click)="register()">Signup</button>
+        
+        <!-- Button is disabled(not clickable), if our RegisterForm contains Validation Errors -->
+        <!-- <button type="submit" color="primary" mat-button [disabled]="!registerForm.valid">Register</button> -->
+      </div>
+
+    </form>
+
+
+
+  </div>
+  </div>

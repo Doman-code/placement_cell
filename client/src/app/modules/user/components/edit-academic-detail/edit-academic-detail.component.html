@@ -1,0 +1,145 @@
+<form [formGroup]="EditAcademicFormGroup">
+    
+    <!-- form start from here -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading">
+                    <h3 style="margin-top: 20px;"> Upadate Academic Details</h3>
+                </div>
+                <hr>
+            </div>
+        </div>
+        <!-- first row -->
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" [style.width.%]="100">
+                    <mat-label>Registration No</mat-label>
+                    <input matInput formControlName="Registration_No" [readonly]="isReadOnly">
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" [style.width.%]="100">
+                    <mat-label>College</mat-label>
+                    <mat-select formControlName="College_Id">
+
+                        <mat-option *ngFor="let val of colleges" [value]="val.College_Id">
+                            {{val.Name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <!-- second row -->
+
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" [style.width.%]="100">
+                    <mat-label>Admission Year</mat-label>
+                    <mat-select formControlName="Admission_Year_Id" >
+                        <!-- <mat-option value="one">2022-2023</mat-option> -->
+                        <mat-option *ngFor="let val of admissionsession" [value]="val.Admission_Session_id">
+                            {{val.Admission_Session_Name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" [style.width.%]="100">
+                    <mat-label>Passing Out year</mat-label>
+                    <mat-select formControlName="PassingOut_Year_Id">
+                        <!-- <mat-option value="one">2022-2023</mat-option> -->
+                        <mat-option *ngFor="let val of admissionsession" [value]="val.Admission_Session_id">
+                            {{val.Admission_Session_Name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <!-- thrid row -->
+        <!-- third row -->
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" [style.width.%]="100">
+                    <mat-label>Program Type</mat-label>
+                    <mat-select formControlName="Degree_Programme_Type_Id"
+                        (selectionChange)="onChangeDegree($event)">
+                        <mat-option *ngFor="let val of degree_type" [value]="val.Degree_Programme_Type_Id">
+                            {{val.Degree_Name}}
+                        </mat-option>
+                    </mat-select> </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" [style.width.%]="100">
+                    <mat-label>Degree Program</mat-label>
+                    <mat-select formControlName="Degree_Programme_Id">
+
+                        <mat-option *ngFor="let val of degree_programs" [value]="val.Program_Id">
+                            {{val.Degree_Program_Name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <!-- fourth row -->
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" [style.width.%]="100" >
+                    <mat-label>Subjects</mat-label>
+                    <mat-select formControlName="Subject_Id">
+
+                        <mat-option *ngFor="let val of subjects" [value]="val.Subject_Id">
+                            {{val.Subject_Name_E}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+
+                    <div class="col-md-6" style="margin-top: 5px; margin-bottom: 5px;">
+                        <div>Upload your Resume</div>
+                        <input type="file" (change)="selectFile($event)">
+                    </div>
+                    <div class="col-md-6" style="margin-top: 20px;">
+                        <div></div>
+                        <button mat-raised-button color="primary" (click)="upload()">Upload</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- fifth row -->
+
+
+        <!-- fifth row -->
+
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" [style.width.%]="100">
+                    <mat-label>OGPA</mat-label>
+                    <input matInput formControlName="OGPA" >
+
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" [style.width.%]="100">
+                    <mat-label>Student Id</mat-label>
+                    <input matInput formControlName="Student_Id" [readonly]="isReadOnly">
+
+                </mat-form-field>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div>
+        <!-- <p>Go to a different step to see the error state</p> -->
+        <button mat-raised-button  mat-button color="primary" [style.width.%]="100" (click)="onUpdate()">Update</button>
+    </div>
+</form>

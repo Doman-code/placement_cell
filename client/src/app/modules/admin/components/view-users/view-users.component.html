@@ -1,0 +1,83 @@
+<div class="container-fluid" style="margin-top: 20px;">
+    <mat-card style="margin-bottom: 40px">
+      <mat-toolbar>
+        <p>
+          <span><h5 class="title">All Registered Users</h5></span>
+        </p>
+      </mat-toolbar>
+      <div class="container">
+        <div class="row table-responsive">
+          <div class="search_container mt-2">
+            <mat-form-field class="example-full-width">
+              <span matPrefix> </span>
+              <input
+                type="tel"
+                matInput
+                placeholder="Search"
+                autocomplete="off"
+                (keyup)="applyFilter($event)"
+              />
+              <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+          </div>
+  
+          <table class="con-table" mat-table matSort [dataSource]="dataSource">
+            <ng-container matColumnDef="User_Name">
+              <th mat-sort-header mat-header-cell *matHeaderCellDef>
+                User Name
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.User_Name }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="Email">
+              <th mat-sort-header mat-header-cell *matHeaderCellDef>
+                Email
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.Email }}
+              </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="Registration_No">
+              <th mat-sort-header mat-header-cell *matHeaderCellDef> Registration No.</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.Registration_No }}
+              </td>
+            </ng-container>
+           
+            <ng-container matColumnDef="Action" >
+              <th mat-sort-header mat-header-cell *matHeaderCellDef>Change Password</th>
+              <td mat-cell *matCellDef="let element">
+                <button
+                  mat-icon-button
+                  color="primary"
+                  (click)="openForgetPassword(element.Registration_No)"
+                >
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <!-- <button
+                  mat-icon-button
+                  color="warn"
+                  (click)="ondelete(element.Placement_Joining_ID)"
+                >
+                  <mat-icon>delete</mat-icon>
+                </button> -->
+              </td>
+            </ng-container> 
+  
+            <tr mat-header-row *matHeaderRowDef="displayedColumns" style="background-color: rgb(122, 122, 235);"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+          <br />
+          <mat-paginator
+            class="paging"
+            [pageSize]="5"
+            [pageSizeOptions]="[5, 10, 25, 100]"
+            aria-label="Select page"
+          >
+          </mat-paginator>
+        </div>
+      </div>
+    </mat-card>
+  </div>

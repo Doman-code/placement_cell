@@ -1,0 +1,104 @@
+ <!-- skill form starts -->
+    <!-- <form [formGroup]="SkillFormGroup"> -->
+    <!-- skill form start -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading">
+                    <h3 style="margin-top: 20px;"> Students Skills Details</h3>
+                </div>
+                <hr>
+            </div>
+        </div>
+
+        <div class="add-lessons-form" [formGroup]="form">
+            <ng-container formArrayName="skill">
+                <ng-container *ngFor="let skillForm of skill.controls; let i = index">
+                    <div class="lesson-form-row" [formGroupName]="i">
+                       
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field appearance="outline" class="inputfieldsize" [style.width.%]="100">
+                                    <!-- <mat-label>Skills</mat-label>
+                    <mat-select placeholder="Select any value"  formControlName="Skill_ID">
+                        <mat-option *ngFor="let val of skills" [value]="val.Skill_Id">
+                            {{val.Skill_Name}}
+                        </mat-option>
+                    </mat-select> -->
+                                    <mat-label>Select skill</mat-label>
+                                    <mat-select formControlName="Skill_Id">
+
+                                        <mat-option *ngFor="let val of skills" [value]="val.Skill_ID
+                                        ">
+                                            {{val.Skill_Name}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-6" style="margin-top: 5px; margin-bottom: 5px;">
+                                        <div>Upload your Certificate</div>
+                                        <input type="file" (change)="selectskillfile($event)"
+                                            formControlName="Skill_Cetificate_Url">
+                                    </div>
+                                    <div class="col-md-6" style="margin-top: 20px;">
+                                        <div></div>
+                                        <button mat-raised-button color="primary" type="button"
+                                            (click)="uploadskill()">Upload</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- fourth row buttons -->
+                        <div class="row">
+                            <div class="row" style="margin-bottom: 20px;">
+                                <div class="col" style="display:flex;justify-content: center;">
+                                    <button mat-mini-fab color="warn" class="delete-btn"
+                                        (click)="deleteSkills(i)" matTooltip="Delete Skills ">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+
+
+                                </div>
+                                <div class="col" style="display:flex;justify-content: center;">
+                                    <button mat-mini-fab (click)="addSkills()"
+                                        matTooltip="Add Skills and scroll down">
+
+                                        <mat-icon class="add-course-btn">add</mat-icon>
+                                    </button>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </ng-container>
+            <div class="row" style="margin-top: 30px; margin-bottom: 40px;">
+                <div class="col">
+                    <button mat-raised-button type="submit" color="primary" [style.width.%]="100"
+                        (click)="onSubmitSkills()">Submit</button>
+
+                </div>
+                <div class="col">
+                    <button mat-button mat-raised-button color="warn" [style.width.%]="100"
+                        style="margin-left: 10px;">Cancle</button>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- <div>
+        <button mat-raised-button  matStepperPrevious mat-button color="warn">Back</button>
+        <button mat-raised-button matStepperNext mat-button color="primary" style="margin-left: 10px;">Next</button>
+      </div> -->
+
+  
+    <!-- </form> -->
+

@@ -1,0 +1,95 @@
+<form [formGroup]="Application_Form_Group">
+    <!-- form start from here -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading">
+                    <h3 style="margin-top: 20px; text-align: center;">Job Application Form </h3>
+                </div>
+                <hr>
+            </div>
+        </div>
+        <!-- first row -->
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" [style.width.%]="100">
+                    <mat-label>Post Name </mat-label>
+                    <input matInput formControlName="Post_Name" [readonly]="isReadOnly">
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" [style.width.%]="100">
+                    <mat-label>Vacancy ID</mat-label>
+                    <input matInput formControlName="Vacancy_ID" [readonly]="isReadOnly">
+                </mat-form-field>
+            </div>
+        </div>
+<!-- second row -->
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" [style.width.%]="100">
+                    <mat-label>Full Name </mat-label>
+                    <input matInput formControlName="Full_Name" [readonly]="isReadOnly">
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" [style.width.%]="100">
+                    <mat-label>Father's Husbands Name</mat-label>
+                    <input matInput formControlName="Fathers_Name" [readonly]="isReadOnly">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <!-- <div class="row">
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" [style.width.%]="100">
+                    <mat-label>Current Address </mat-label>
+                    <input matInput >
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" [style.width.%]="100">
+                    <mat-label>Permanent Address</mat-label>
+                    <input matInput >
+                </mat-form-field>
+            </div>
+        </div> -->
+
+<!-- third row -->
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" [style.width.%]="100">
+                    <mat-label>Email </mat-label>
+                    <input matInput formControlName="Email" [readonly]="isReadOnly">
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" [style.width.%]="100">
+                    <mat-label>Mobile No</mat-label>
+                    <input matInput formControlName="Mobile" [readonly]="isReadOnly">
+                </mat-form-field>
+            </div>
+        </div>
+<!-- fourth row -->
+<!-- <div class="row">
+    <div class="col-md-6">
+        <mat-form-field appearance="outline" [style.width.%]="100">
+            <mat-label>DoB</mat-label>
+            <input matInput >
+        </mat-form-field>
+    </div>
+    <div class="col-md-6">
+        <mat-form-field appearance="outline" [style.width.%]="100">
+            <mat-label>Age</mat-label>
+            <input matInput >
+        </mat-form-field>
+    </div>
+</div> -->
+
+<div class="row" [style.width.%]="30" style="margin: auto;">
+        <button mat-button mat-raised-button color="primary" (click)="SubmitApplication()"  [disabled]="isapplied || !Application_Form_Group.valid">Apply</button>
+
+</div>
+    </div>
+       
+</form>

@@ -1,0 +1,17 @@
+.comapany{
+    display: flex;
+    justify-content: center;
+}
+
+/* card-slider.component.scss */
+
+/* Adjust the height and width of the card within the carousel */
+app-card {
+    height: 300px; /* Adjust the desired height */
+    width: 400px; /* Adjust the desired width */
+  }
+  
+  /* Add any additional styling for the card slider component here */
+  .imageUrl{
+    width: 30vh;
+  }

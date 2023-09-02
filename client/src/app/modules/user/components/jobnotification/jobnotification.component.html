@@ -1,0 +1,49 @@
+<div class="row notification-container bgcolor ">
+    <div class="col-md-12">
+        <div>
+            <div class="notice-board">
+                <div class="notice-header">
+                    <h2>Jobs For You</h2>
+                </div>
+                <div class="notice-header">
+                    <div class="row">
+                        <div class="col-md-2">ID</div>
+                        <div class="col-md-3">Date</div>
+                        <div class="col-md-3">Title</div>
+                        <div class="col-md-2">Remark</div>
+                        <div class="col-md-2">actions</div>
+                        
+                    </div>
+
+                </div>
+                <marquee behavior="" direction="up" onMouseOver="this.stop()" onMouseOut="this.start()">
+                    <!-- <div class="row text-center" >
+                        <div class="col-md-3">{{notification_detail.Notification_ID}}</div>
+                        <div class="col-md-3">{{notification_detail.Notification_Date | date}}</div>
+                        <div class="col-md-3"><a href="../assets\pdf\myresume.pdf">{{notification_detail.Notification_Title}}</a></div>
+                        <div class="col-md-3">Active</div>
+                    </div> -->
+
+
+                    <div class="row text-center" *ngFor="let item of notification_detail">
+                        <div class="col-md-2">{{item.Notification_ID}}</div>
+                        <div class="col-md-3">{{item.Notification_Date |date}}</div>
+                        <!-- <div class="col-md-3"><a href="../assets\pdf\myresume.pdf">{{item.Notification_Title}} </a></div> -->
+                        <!-- <div class="col-md-3"><a  style="color: rgb(10, 48, 129);" (click)="pdfUrl(item.Vacancy_Id)" [class.cursor-pointer]="true">{{item.Notification_Title}} </a></div> -->
+                        
+                        <div class="col-md-3"><a  style="color: rgb(10, 48, 129);" href={{item.PDF_PATH}} target="_blank" [class.cursor-pointer]="true">{{item.Notification_Title}} </a></div>
+
+
+                        <div class="col-md-2">{{item.Remark}}</div>
+                        <div class="col-md-2"><button mat-raised-button color="primary" (click)="opendialog(item.Vacancy_Id)" [disabled]="isDataInTable2ExistInTable1(item.Vacancy_Id)">{{  isDataInTable2ExistInTable1(item.Vacancy_Id)? 'Applied' : 'Apply' }}</button>
+                        </div>
+
+                        <hr>
+                    </div>
+
+
+                </marquee>
+            </div>
+        </div>
+    </div>
+</div>

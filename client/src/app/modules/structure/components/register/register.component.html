@@ -1,0 +1,221 @@
+
+    <div class="container">
+        <form [formGroup]="PersonalDataFormGroup" >
+            <!-- Personal Details -->
+            <div class="heading">
+                <h3 style="margin-top: 20px;"> Students Personal Details</h3>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline" [style.width.%]="100">
+                        <mat-label>Enroll No</mat-label>
+                        <input matInput formControlName="UE_ID" id="ue_id" name="ue_id">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline" [style.width.%]="100">
+                        <mat-label>Registraion Type</mat-label>
+                        <mat-select formControlName="Registration_Type" (selectionChange)="onRegistraionTypeChange($event)">
+                            <mat-option value="y">MIS</mat-option>
+                            <mat-option value="n">Non MIS</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+    
+            
+            <!-- first-middle-last name -->
+            <div class="row">
+    
+                <div class="col">
+                    <mat-form-field appearance="outline" [style.width.%]="100">
+                        <mat-label>Salutaion</mat-label>
+                        <mat-select formControlName="Salutation_E">
+                            <mat-option *ngFor="let val of salutations_english" [value]="val.Salutation_Id">
+                                {{val.Value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="outline" [style.width.%]="100">
+                        <mat-label>Fist name</mat-label>
+                        <input matInput formControlName="Student_First_Name_E">
+                        <!-- <mat-hint align="start"><strong>हिन्दी में </strong> </mat-hint> -->
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="outline" [style.width.%]="100">
+                        <mat-label>Middle Name</mat-label>
+                        <input matInput formControlName="Student_Middle_Name_E">
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="outline" [style.width.%]="100">
+                        <mat-label>Last Name</mat-label>
+                        <span></span>
+                        <input matInput formControlName ="Student_Last_Name_E">
+                    </mat-form-field>
+                </div>
+            </div>
+    
+            <!-- first-middle-last name  in hindi-->
+            <div class="row">
+    
+                <div class="col">
+                    <mat-form-field appearance="outline" [style.width.%]="100">
+                        <mat-label>अभिवादन</mat-label>
+                        <mat-select formControlName="Salutation_H">
+                            <mat-option *ngFor="let val of salutations_hindi" [value]="val.Salutation_Id">
+                                {{val.Value}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-hint align="start"><strong>हिन्दी में </strong> </mat-hint>
+    
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="outline" [style.width.%]="100">
+                        <mat-label>प्रथम नाम</mat-label>
+                        <input matInput formControlName="Student_First_Name_H">
+                        <mat-hint align="start"><strong>हिन्दी में </strong> </mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="outline" [style.width.%]="100">
+                        <mat-label>मध्य नाम</mat-label>
+                        <input matInput formControlName="Student_Middle_Name_H">
+                        <mat-hint align="start"><strong>हिन्दी में </strong> </mat-hint>
+    
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="outline" [style.width.%]="100">
+                        <mat-label>अंतिम नाम </mat-label>
+                        <mat-hint align="start"><strong>हिन्दी में </strong> </mat-hint>
+    
+                        <span></span>
+                        <input matInput formControlName="Student_Last_Name_H" >
+                    </mat-form-field>
+                </div>
+            </div>
+    
+            <!-- second row  dob gender-->
+            <div class="row" style="margin-top: 10px;">
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline" [style.width.%]="100">
+                        <mat-label>Choose DoB</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="DOB">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <!-- gender -->
+                    <div [style.width.%]="100">
+                        <label>Gender: </label>
+                        <mat-radio-group formControlName="Gender_Id">
+                            <mat-radio-button value="m">Male</mat-radio-button>
+                            <mat-radio-button value="f">Female</mat-radio-button>
+                            <mat-radio-button value="o">Other</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+    
+            </div>
+            <!-- third row mobile and email -->
+    
+    
+            <div class="row" style="margin-top: 10px;">
+                <!-- mobile -->
+                <div class="col">
+                    <mat-form-field appearance="outline" [style.width.%]="100">
+                        <mat-label>Telephone</mat-label>
+                        <span matPrefix>+91 &nbsp;</span>
+                        <input  matInput formControlName="Mobile_No">
+                        <mat-icon matSuffix>mode_edit</mat-icon>
+                    </mat-form-field>
+                </div>
+                <!-- email -->
+                <div class="col">
+    
+                    <mat-form-field class="example-full-width" [style.width.%]="100" appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input type="email" matInput formControlName="Email_Id" placeholder="Ex. pat@example.com">
+                        <mat-error *ngIf="PersonalDataFormGroup.controls['Email_Id'].hasError('required')">
+                            Email is <strong>required</strong>
+                          </mat-error>
+                          <mat-error *ngIf="PersonalDataFormGroup.controls['Email_Id'].hasError('email')">
+                            Email is <strong>Incorrect</strong>
+                          </mat-error>
+                    </mat-form-field>
+    
+    
+                </div>
+    
+            </div>
+            <!-- fifth row father name mother name -->
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline" [style.width.%]="100">
+                        <mat-label>Father Name</mat-label>
+                        <input matInput formControlName="Father_Name_E">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline" [style.width.%]="100">
+                        <mat-label>Mother Name</mat-label>
+                        <input matInput formControlName="Mother_Name_E">
+                    </mat-form-field>
+                </div>
+            </div>
+    
+            <!-- fifth row father name mother name हिन्दी में  -->
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline" [style.width.%]="100">
+                        <mat-label>पिता का नाम </mat-label>
+                        <input matInput formControlName="Father_Name_H">
+                        <mat-hint align="start"><strong>हिन्दी में </strong> </mat-hint>
+    
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline" [style.width.%]="100">
+                        <mat-label>माता का नाम </mat-label>
+                        <input matInput formControlName="Mother_Name_H">
+                        <mat-hint align="start"><strong>हिन्दी में </strong> </mat-hint>
+    
+                    </mat-form-field>
+                </div>
+            </div>
+    
+    
+            <!-- sixth row spouse name guardian name -->
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline" [style.width.%]="100">
+                        <mat-label>Spouse Name</mat-label>
+                        <input matInput formControlName="Spouse_Name_E">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline" [style.width.%]="100">
+                        <mat-label>Guardian Name</mat-label>
+                        <input matInput formControlName="Guardian_Name_E">
+                    </mat-form-field>
+                </div>
+            </div>
+    
+           
+    </form>
+    <div class="row" [style.width.%]="100">
+        <button [disabled]="!PersonalDataFormGroup.valid || isSubmitting" type="submit" mat-button  (click) ="onSubmit()" mat-raised-button color="primary">Submit</button>
+        <span *ngIf="isSubmitting" class="spinner"></span>
+    </div>
+    </div>
+
+
+

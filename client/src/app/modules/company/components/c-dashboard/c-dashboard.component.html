@@ -1,0 +1,123 @@
+
+<mat-sidenav-container class="sidenav-container" >
+  <mat-sidenav #drawer class="sidenav sidenavstyle" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>
+      <div class="item"><img [src]="src1" [width]="size" [height]="size" class="hy-profile-image user-img" />
+         <h2>{{username}}</h2>
+      </div>
+   
+    </mat-toolbar>
+    <mat-nav-list style="margin-top: 100px;">
+
+      <li class="nav-item " >
+        <button class="das-button" mat-button routerLink="/company/applicants" [disabled]="!isregistered">
+            <mat-icon>home</mat-icon>
+            <span>Home</span>
+        </button>
+    </li>
+
+    <!-- <li class="nav-item " >
+      <button mat-button routerLink="viewprofile" >
+          <mat-icon>visibility</mat-icon>
+          <span>Viewprofile</span>
+      </button>
+  </li> -->
+  <li class="nav-item " >
+    <button class="das-button" mat-button routerLink="/company/registercompany" 
+    matTooltip="One Time Registration" [disabled]="isregistered">
+        <mat-icon>check</mat-icon>
+        <span>Registration</span>
+    </button>
+</li>
+
+  <li class="nav-item " >
+    <button class="das-button" mat-button routerLink="/company/postjobs" [disabled]="!isregistered">
+        <mat-icon>add_to_photos</mat-icon>
+        <span>Post Jobs</span>
+    </button>
+</li>
+
+<li class="nav-item " >
+  <button class="das-button" mat-button routerLink="/company/vacancydetail" [disabled]="!isregistered">
+      <mat-icon>details</mat-icon>
+      <span>Vacancy Detail</span>
+  </button>
+</li>
+
+<li class="nav-item">
+  <button class="das-button" mat-button routerLink="/company/applicants" [disabled]="!isregistered">
+      <mat-icon>group</mat-icon>
+      <span>Applicants</span>
+  </button>
+</li>
+
+<li class="nav-item " >
+  <button class="das-button" mat-button routerLink="/joining-detail" [disabled]="!isregistered">
+      <mat-icon>bedge</mat-icon>
+      <span>Joinnig Detail</span>
+  </button>
+</li>
+
+<li class="nav-item " >
+  <button class="das-button" mat-button routerLink="/placement-schedule" [disabled]="!isregistered">
+      <mat-icon>bedge</mat-icon>
+      <span>Placement Schedule</span>
+  </button>
+</li>
+
+<li class="nav-item " >
+  <button class="das-button" mat-button (click)="logout()" >
+      <mat-icon>exit_to_app </mat-icon>
+      <span>Logout</span>
+  </button>
+</li>
+
+
+<!-- 
+      <a mat-list-item routerLink="">Home</a>
+      <a mat-list-item routerLink='viewprofile'>ViewProfile</a>    
+      <a mat-list-item routerLink="/user/addprofile">AddProfile</a>
+      <a mat-list-item routerLink="/user/appliedjob">AppliedJob</a>
+      <a mat-list-item routerLink="/user/jobnotification">JobNotification</a>
+      <a mat-list-item routerLink="">logout</a>
+   -->
+    
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="nav sticky-top" color="primary">
+      <!-- <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button> -->
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" style="margin-top: 9px;">
+        <mat-icon aria-label="Side nav toggle icon">{{ drawer.opened ? 'menu_open' : 'menu' }}</mat-icon>
+      </button>
+
+      <span >Company Dashboard</span>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <!-- <div class="company-body"> -->
+      <router-outlet></router-outlet>
+    <!-- </div> -->
+    
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+ <!-- <div class="container-fluid">
+<div class="footer">
+  <span><strong>All Rigths Are Reserverd by &copy; IGKV 2023</strong></span>
+</div>
+<div class="logos">
+  <span class="footer-logo"><a href="https://chhattisgarh.nic.in/"> <img src="../assets\images\niclogo.jpg" alt="NIC Logo"></a></span>
+
+</div>
+</div>   -->

@@ -1,0 +1,85 @@
+<div class="row body">
+    <div class="col-lg-1"></div>
+  <div class="col-lg-10" style="margin-top: 30px; padding-top: -5vh;">
+    <div class="card shadow-sm">
+      <div class="card-header bg-transparent border-0" style="display: flex; justify-content:space-between">
+       <h3 class="mb-0">Vacancy Detail</h3>
+       <button mat-mini-fab color="primary" aria-label="Example icon button with a bookmark icon" matTooltip="Download Notification" >
+       <a href="{{this.document_path}}" target="_blank"><mat-icon >get_app</mat-icon></a> 
+      </button>
+      
+       <div class="example-button-container">
+        <button mat-mini-fab color="accent" aria-label="Example icon button with a bookmark icon" (click)="close()">
+          <mat-icon >close</mat-icon>
+        </button>
+        
+      </div>
+      
+      </div>
+      <div class="card-body pt-0">
+        <table class="table table-bordered name">
+         
+          
+          <tr>
+            <th width="40%">Job Title</th>
+            <td width="2%">:</td>
+            <td>{{vacancy_detail.Job_Title}}</td>
+          </tr>
+
+          <tr>
+            <th width="40%">Job Description</th>
+            <td width="2%">:</td>
+            <td>{{vacancy_detail.Job_Description}}</td>
+          </tr>
+          <tr>
+            <th width="40%">No Of Post</th>
+            <td width="2%">:</td>
+            <td>{{vacancy_detail.No_Of_Post}}</td>
+            <!-- <td>{{academic_detail.Registration_No}}</td> -->
+          </tr>
+          <tr>
+            <th width="40%">Job Location</th>
+            <td width="2%">:</td>
+            <td>{{vacancy_detail.Job_Location}}</td>
+          </tr>
+          <tr>
+            <th width="40%">Salary</th>
+            <td width="2%">:</td>
+            <td>{{vacancy_detail.Salary}}</td>
+          </tr>
+          <tr>
+            <th width="40%">Last Date For Apply</th>
+            <td width="2%">:</td>
+            <td>{{vacancy_detail.Last_Date_for_apply | date}}</td>
+          </tr>
+          <tr>
+            <th width="40%">Minimum Exprience</th>
+            <td width="2%">:</td>
+            <td>{{vacancy_detail.Min_Experience_in_Year}} yaer</td>
+          </tr>
+
+          <!-- <tr>
+            <th width="40%">Maximum Age</th>
+            <td width="2%">:</td>
+            <td>{{vacancy_detail.Maximum_Age}}</td>
+          </tr> -->
+
+          <tr>
+            <th width="40%">Prefred Gender</th>
+            <td width="2%">:</td>
+            <td> {{vacancy_detail.Preferred_Gender}}</td>
+          </tr>
+          <tr>
+            <th width="40%">Prefred Language</th>
+            <td width="2%">:</td>
+            <td> {{vacancy_detail.Prefered_Language}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+      <div style="height: 26px"></div>
+    
+  </div>
+  <div class="col-lg-1"></div>
+  </div>
+ 

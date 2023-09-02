@@ -1,0 +1,11 @@
+
+.markii img {
+    height: 100%; /* Make the images occupy the full height of the container */
+    width: auto; /* Maintain the aspect ratio of the images */
+    display: inline-block; /* Make sure images appear side by side */
+    vertical-align: top; /* Adjust vertical alignment if needed */
+  }
+  .marquee-content {
+    animation: marquee-slide 10s linear infinite;
+    white-space: nowrap; /* Prevent content from wrapping */
+  }

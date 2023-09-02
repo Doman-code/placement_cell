@@ -1,0 +1,118 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+.sticky-top{
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+}
+
+.navigation{
+ margin-left: auto;
+}
+
+.navbar {
+    background-color: #fff;
+  }
+
+
+.igkvlogo{
+    width: 80px;
+    // border: 3px solid black;
+    border-radius: 50px;
+    margin-right: 8px;
+}
+
+.navbar-nav .nav-item {
+    margin-right: 15px;
+  }
+
+ 
+
+  .signin button {
+    background: linear-gradient(to left, rgb(92, 198, 234) 50%, transparent 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: background-position 0.3s ease;
+    color: black;
+    border-radius: 30px;
+    padding: 2x;
+    width: 80px;
+    margin-right: 10px;
+    margin-left: -20px;
+    border: 2px solid whitesmoke;
+  }
+  
+  .signin button:hover,.signin button.active {
+  background-position: left bottom;
+  // color: white;
+}
+
+  
+
+  @keyframes colorChange {
+    0% {
+      background-color: #098ef5;
+    }
+    50% {
+      background-color: #8aa60d;
+    }
+    100% {
+      background-color: #3c3e37;
+    }
+  }
+
+
+
+  
+ 
+
+.navbar{
+    // top: 0;
+    // background-image: linear-gradient(#4776E6,#8E54E9);
+    background-color: whitesmoke;;
+    padding: 5px;
+    font-family: "Open Sans", "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+   margin-right: 7px;
+}
+
+
+
+.nav-link {
+  color: black;
+  font-size: 16px;
+  line-height: 30px; /* Adjust the desired height */
+  transition: color 0.3s ease-in-out;
+}
+  .navbar-nav.navigation {
+    position: relative;
+  }
+  
+  .navbar-nav.navigation .nav-link {
+    background: linear-gradient(to right, teal 50%, transparent 50%);
+    background-size: 200% 110%;
+    background-position: right bottom;
+    transition: background-position 0.3s ease;
+    color: black;
+    border-left: 4px solid transparent;
+    padding-left: 7px;
+  }
+  
+  .navbar-nav.navigation .nav-link:hover,
+  .navbar-nav.navigation .nav-link.active {
+    background-position: left bottom;
+    color: white;
+  }
+  
+  @media screen and (max-width: 1000px) {
+    /* Add your responsive styles here */
+  }
+
+  #navbarSupportedContent{
+    margin-right: 90px;
+  }
+

@@ -1,0 +1,383 @@
+<div class="container">
+    <mat-stepper labelPosition="bottom" #stepper>
+        <!-- first step -->
+        <mat-step [stepControl]="PostJobsForm" errorMessage="Vacancy Detail is required.">
+            <form [formGroup]="PostJobsForm">
+                <ng-template matStepLabel>Vacancy Detail</ng-template>
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- form start -->
+                        <div class="heading">
+                            <h3 style="margin-top: 20px;"> Vacancy Detail</h3>
+                        </div>
+                        <hr>
+
+                        <!-- first row company registration, Job title -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field appearance="outline" [style.width.%]="100">
+                                    <mat-label> Company Registration No</mat-label>
+                                    <input matInput formControlName="Company_Registration_No">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field appearance="outline" [style.width.%]="100">
+                                    <mat-label>Job Title</mat-label>
+                                    <input matInput formControlName="Job_Title">
+
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <!-- second row,Job Description ,Job Qualification -->
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field appearance="outline" [style.width.%]="100">
+                                    <mat-label>Job Description</mat-label>
+                                    <textarea matInput formControlName="Job_Description"></textarea></mat-form-field>
+                            </div>
+                            
+                               
+                                <div class="col-md-6">
+                                    <mat-form-field appearance="outline" [style.width.%]="100">
+                                        <mat-label>Job Selection</mat-label>
+                                        <input matInput formControlName="Job_Selection" placeholder="Biodata,OnlineInterview">
+                                    </mat-form-field>
+                                </div>
+                                <!-- <section class="example-section" [formGroup]="gender">
+                                    <h6 style="padding-top:10px">Prefered Gender:</h6>
+                                    <p><mat-checkbox formControlName="male">Male</mat-checkbox></p>
+                                    <p><mat-checkbox formControlName="female">Female</mat-checkbox></p>
+                                    <p><mat-checkbox formControlName="both">Other</mat-checkbox></p>
+                                    <p><mat-checkbox formControlName="other">Other</mat-checkbox></p> 
+            
+                                </section> -->
+
+
+                                <!-- <label> Prefered Gender: </label>
+                                <mat-radio-group formControlName="Preferred_Gender">
+                                    <mat-radio-button value="m">Male</mat-radio-button>
+                                    <mat-radio-button value="f">Female</mat-radio-button>
+                                    <mat-radio-button value="b">Both</mat-radio-button>
+                                    <mat-radio-button value="t">Other</mat-radio-button>
+
+                                </mat-radio-group> -->
+
+
+                            
+                        </div>
+                        <!-- third row location and salary -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field appearance="outline" [style.width.%]="100">
+                                    <mat-label> Job Location</mat-label>
+                                    <input matInput formControlName="Job_Location">
+
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field appearance="outline" [style.width.%]="100">
+                                    <mat-label>Last Date For Apply</mat-label>
+                                    <input matInput [matDatepicker]="picker" formControlName="Last_Date_for_apply">
+                                    <mat-hint>MM/DD/YYYY</mat-hint>
+                                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <!-- no of post and  -->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <mat-form-field appearance="outline" [style.width.%]="100">
+                                    <mat-label>No of post</mat-label>
+                                    <input matInput formControlName="No_Of_Post">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field appearance="outline" [style.width.%]="100">
+                                    <mat-label>Salary</mat-label>
+                                    <input matInput formControlName="Salary">
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <!-- fourth row  last date for apply-->
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <mat-form-field appearance="outline" [style.width.%]="100">
+                                    <mat-label> Minimum Experience </mat-label>
+                                    <input matInput formControlName="Min_Experience_in_Year">
+                                    <mat-hint align="start"><strong>In Year</strong> </mat-hint>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-6">
+                                <mat-form-field appearance="outline" [style.width.%]="100">
+                                    <mat-label> Maximum Age </mat-label>
+                                    <input matInput formControlName="Maximum_Age">
+                                    <mat-hint align="start"><strong>In Year</strong> </mat-hint>
+                                </mat-form-field>
+                            </div>
+
+
+                        </div>
+
+
+
+
+                        <!-- sixth row  -->
+
+                        <!-- <div class="row">
+                            <div class="col-md-6">
+                                <button mat-raised-button color="primary" [style.width.%]="100" type="submit" style="margin-top: 10px;">Submit</button>
+            
+            
+                            </div>
+                            <div class="col-md-6">
+                                <button mat-raised-button color="warn" [style.width.%]="100" style="margin-top: 10px;" >Clear</button>
+            
+                            </div>
+                        </div> -->
+
+                    </div>
+
+                </div>
+
+                <!-- language proficiency -->
+                <div class="row">
+                    <div class="col-md-6" style="display: flex; margin-top: 4px; margin-bottom: 20px;">
+                        <form [formGroup]="languageForm">
+                            <mat-label><b>Prefered Language</b></mat-label>
+
+                            <div *ngFor="let language of languages" >
+                                <label>
+                                  <input type="checkbox" [formControlName]="language" />
+                                  {{ language }}
+                                </label>
+                              </div>
+                        </form>
+                    </div>
+<!--  select gender  -->
+                    <div class="col-md-6" style="display: flex; margin-top: 4px; margin-bottom: 20px;">
+                        <form [formGroup]="genderForm">
+                            <mat-label><b>Prefered Gender</b></mat-label>
+
+                            <div *ngFor="let gender of genders" >
+                                <label>
+                                  <input type="checkbox" [formControlName]="gender" />
+                                  {{ gender }}
+                                </label>
+                              </div>
+                        </form>
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-6">
+
+
+
+                    </div>
+                    <div class="col-md-6">
+
+
+                    </div>
+                </div>
+
+
+                <div>
+                    <button mat-button matStepperNext mat-raised-button color="primary"
+                        [style.width.%]="100">Next</button>
+                </div>
+            </form>
+        </mat-step>
+
+
+        <!-- second step -->
+        <mat-step [stepControl]="AcademicDetailForm" errorMessage="Academic Detail is required.">
+            <form [formGroup]="AcademicDetailForm">
+                <ng-template matStepLabel>Academic Detail</ng-template>
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- form start -->
+                        <div class="heading">
+                            <h3 style="margin-top: 20px;"> Academic Detail</h3>
+                        </div>
+                        <hr>
+
+                        <!-- first row company registration, Job title -->
+                        <div class="row">
+                            <!-- <div class="col-md-6">
+                                <mat-form-field appearance="outline" [style.width.%]="100">
+                                    <mat-label> Vacancy ID</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+                            </div> -->
+                            <div class="col-md-6">
+                                <mat-form-field appearance="outline" [style.width.%]="100">
+                                    <mat-label>Program Type</mat-label>
+                                    <mat-select formControlName="Degree_Programme_Type_Id"
+                                        (selectionChange)="onChangeDegree($event)">
+                                        <mat-option *ngFor="let val of degree_type"
+                                            [value]="val.Degree_Programme_Type_Id">
+                                            {{val.Degree_Name}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-6">
+                                <mat-form-field appearance="outline" [style.width.%]="100">
+                                    <mat-label>Degree Program</mat-label>
+                                    <mat-select formControlName="Degree_Programme_Id">
+
+                                        <mat-option *ngFor="let val of programs" [value]="val.Program_Id">
+                                            {{val.Degree_Program_Name}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <!-- second row,Job Description ,Job Qualification -->
+
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <mat-form-field appearance="outline" [style.width.%]="100">
+                                    <mat-label>Subject</mat-label>
+                                    <!-- <mat-select formControlName="Subject_Id">
+                                        <mat-option value="1">maths</mat-option>
+                                        <mat-option value="2">bio</mat-option>
+                                        <mat-option value="3">english</mat-option>
+                                    </mat-select> -->
+                                    <mat-select formControlName="Subject_Id" id="dropdown">
+                                        <mat-option *ngFor="let val of subjects"
+                                            [value]="val.Subject_Id">
+                                            {{val.Subject_Name_E}}
+                                        </mat-option>
+                                    </mat-select> 
+                                </mat-form-field>
+                            </div>
+
+                           
+
+                            <div class="col-md-6">
+                                <mat-form-field appearance="outline" [style.width.%]="100">
+                                    <mat-label>Passing Out year</mat-label>
+                                    <mat-select formControlName="PassingOut_Year_Id">
+                                        <mat-option *ngFor="let val of passyear" [value]="val.Admission_Session_id">
+                                            {{val.Admission_Session_Name}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <!-- third row location and salary -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field appearance="outline" [style.width.%]="100">
+                                    <mat-label>Minimum OGPA</mat-label>
+                                    <input matInput formControlName="Minimum_OGPA">
+
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+
+                                <mat-form-field appearance="outline" [style.width.%]="100">
+                                    <mat-label>Degree Completion?</mat-label>
+                                    <mat-select formControlName="Degree_Complete_Type">
+                                        <mat-option value="completed">Completed</mat-option>
+                                        <mat-option value="appearing">Appearing</mat-option>
+
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                        </div>
+                       
+
+                        <!-- file upload code  -->
+<div class="row fileupload">
+    <div class="col" style="margin-top: 5px; margin-bottom: 5px">
+      <div><b>Upload Vacancy Document</b></div>
+      <input type="file" (change)="selectOther($event)" required />
+    </div>
+    <div class="col" style="margin-top: 20px">
+      <div></div>
+      <button
+        mat-raised-button
+        color="primary"
+        type="button"
+        (click)="uploadOther()"
+      >
+        Upload
+      </button>
+    </div>
+  </div>
+
+                    </div>
+
+                </div>
+
+                <!-- <div>
+                    <button mat-button matStepperNext mat-raised-button color="primary"
+                        [style.width.%]="100">Next</button>
+                </div> -->
+                <div class="row">
+                    <div class="col">
+                        <button mat-button matStepperPrevious mat-raised-button color="accent"
+                            [style.width.%]="100">Back</button>
+
+                    </div>
+                    <div class="col">
+                        <button mat-button matStepperNext mat-raised-button color="primary"
+                            [style.width.%]="100">Next</button>
+
+                    </div>
+
+                </div>
+
+
+            </form>
+        </mat-step>
+
+
+        <!-- thrid step -->
+        <!-- fourth step -->
+        <mat-step>
+            <ng-template matStepLabel>Done</ng-template>
+            <p>Are You Want To Submit Your Form ?</p>
+            <!-- last row submit   -->
+            <div class="row" style="margin-top:10px">
+                <div class="col">
+                    <button mat-raised-button type="submit" color="primary" [style.width.%]="100"
+                        (click)="onSubmit()">Submit</button>
+
+                </div>
+                <div class="col">
+                    <button mat-raised-button type="button" color="warn" [style.width.%]="100"
+                        (click)="stepper.reset()">Cancle</button>
+
+                </div>
+
+
+            </div>
+
+
+            <div>
+
+                <!-- <button mat-button matStepperPrevious mat-raised-button color="accent">Back</button> -->
+                <!-- <button mat-button mat-raised-button color="warn" (click)="stepper.reset()" style="margin-left: 10px;">Reset</button> -->
+            </div>
+        </mat-step>
+
+    </mat-stepper>
+
+</div>

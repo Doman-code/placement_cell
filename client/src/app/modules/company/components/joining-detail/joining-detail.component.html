@@ -1,0 +1,317 @@
+<div class="container-fluid" id="addnews">
+  <mat-card>
+    <div class="container">
+      <form [formGroup]="pScheduleForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-md-12 heading">
+            <h2 style="color: whitesmoke">Placement Joining Details</h2>
+          </div>
+        </div>
+        <br />
+
+        <fieldset class="scheduler-border">
+          <legend class="scheduler-border">Placement Joining Details</legend>
+          <div class="control-group">
+            <div class="row">
+              <div class="col-md-3">
+                <mat-form-field appearance="outline" class="inputfieldsize">
+                  <mat-label>Company</mat-label>
+                  <mat-select formControlName="Company_ID">
+                    <mat-option
+                      *ngFor="let c of company"
+                      [value]="c.Company_ID"
+                    >
+                      {{ c.Name }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-md-3">
+                <mat-form-field appearance="outline" class="inputfieldsize">
+                  <mat-label>Vacancy </mat-label>
+                  <mat-select formControlName="Vacancy_ID">
+                    <mat-option
+                      *ngFor="let c of vacancy"
+                      [value]="c.Vacancy_ID"
+                    >
+                      {{ c.Job_Title }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-md-3">
+                <mat-form-field appearance="outline" class="inputfieldsize">
+                  <mat-label>Placement Schedule Id</mat-label>
+                  <mat-select formControlName="Placement_Schedule_ID">
+                    <mat-option
+                      *ngFor="let c of schedule"
+                      [value]="c.Placement_Schedule_ID"
+                    >
+                      {{ c.Placement_Schedule_ID }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-md-3">
+                <mat-form-field appearance="outline" class="inputfieldsize">
+                  <mat-label>Student </mat-label>
+                  <mat-select formControlName="Student_ID">
+                    <mat-option
+                      *ngFor="let c of student"
+                      [value]="c.TnP_Student_Master_Id"
+                    >
+                      {{ c.Student_First_Name_E }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <mat-form-field
+                  color="accent"
+                  appearance="outline"
+                  class="inputfieldsize"
+                >
+                  <mat-label>Offer Date</mat-label>
+                  <input
+                    matInput
+                    [matDatepicker]="picker"
+                    formControlName="Offer_Date"
+                  />
+                  <mat-hint>DD/MM/YYYY</mat-hint>
+                  <mat-datepicker-toggle
+                    matIconSuffix
+                    [for]="picker"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div class="col-md-4">
+                <mat-form-field
+                  color="accent"
+                  appearance="outline"
+                  class="inputfieldsize"
+                >
+                  <mat-label>Joining Date</mat-label>
+                  <input
+                    matInput
+                    [matDatepicker]="picker1"
+                    formControlName="Joining_Date"
+                  />
+                  <mat-hint>DD/MM/YYYY</mat-hint>
+                  <mat-datepicker-toggle
+                    matIconSuffix
+                    [for]="picker1"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div class="col-md-4">
+                <mat-form-field
+                  color="accent"
+                  appearance="outline"
+                  class="inputfieldsize"
+                >
+                  <mat-label>Accept Reject Date</mat-label>
+                  <input
+                    matInput
+                    [matDatepicker]="picker2"
+                    formControlName="Accept_Reject_Date"
+                  />
+                  <mat-hint>DD/MM/YYYY</mat-hint>
+                  <mat-datepicker-toggle
+                    matIconSuffix
+                    [for]="picker2"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <div>
+                  <mat-label><h6>Accept/Reject Status</h6></mat-label>
+                </div>
+                <mat-radio-group
+                  aria-label="Select an option"
+                  formControlName="Accept_Reject_Status"
+                >
+                  <mat-radio-button value="A">Accept</mat-radio-button>
+                  <mat-radio-button value="R">Reject</mat-radio-button>
+                </mat-radio-group>
+              </div>
+              <div class="col-md-10">
+                <mat-form-field appearance="outline" class="inputfieldsize">
+                  <mat-label>Reson</mat-label>
+                  <textarea
+                    matInput
+                    formControlName="Reason_for_Rejection"
+                  ></textarea>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col offset-5">
+              <button mat-raised-button type="button" (click)="onClear()">
+                Clear
+              </button>
+              &nbsp;&nbsp;
+              <button
+                mat-raised-button
+                color="primary"
+                *ngIf="!iseditmode"
+                type="submit"
+              >
+                Submit
+              </button>
+              <button
+                mat-raised-button
+                color="primary"
+                *ngIf="iseditmode"
+                (click)="onupdate()"
+                type="button"
+              >
+                Update
+              </button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </mat-card>
+</div>
+<br /><br />
+
+<!-- mat table -->
+<div class="container-fluid">
+  <mat-card style="margin-bottom: 40px">
+    <mat-toolbar>
+      <p>
+        <span><h5 class="title">All Scheduled Placements</h5></span>
+      </p>
+    </mat-toolbar>
+    <div class="container">
+      <div class="row table-responsive">
+        <div class="search_container mt-2">
+          <mat-form-field class="example-full-width">
+            <span matPrefix> </span>
+            <input
+              type="tel"
+              matInput
+              placeholder="Search"
+              autocomplete="off"
+              (keyup)="applyFilter($event)"
+            />
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <table class="con-table" mat-table matSort [dataSource]="dataSource">
+          <ng-container matColumnDef="Placement_Joining_ID">
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>
+              JOINING ID
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.Placement_Joining_ID }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Student_First_Name_E">
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>
+              STUDENT NAME
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.Student_First_Name_E }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Name">
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>
+              COMPANY NAME
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.Name }}</td>
+          </ng-container>
+          <ng-container matColumnDef="Placement_Schedule_ID">
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>SCHEDULE</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.Placement_Schedule_ID }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Job_Title">
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>JOB TITLE</th>
+            <td mat-cell *matCellDef="let element">{{ element.Job_Title }}</td>
+          </ng-container>
+          <ng-container matColumnDef="Accept_Reject_Status">
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>STATUS</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.Accept_Reject_Status }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Joining_Date">
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>
+              JOINING DATE
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.Joining_Date | date : "dd/MM/YYYY" }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Offer_Date">
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>
+              OFFER DATE
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.Offer_Date | date : "dd/MM/YYYY" }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Accept_Reject_Date">
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>
+              ACCEPT/REJECT DATE
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.Accept_Reject_Date | date : "dd/MM/YYYY" }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Reason_for_Rejection">
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>RESON</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.Reason_for_Rejection }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Action" stickyEnd>
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let element">
+              <button
+                mat-icon-button
+                color="primary"
+                (click)="onedit(element.Placement_Joining_ID)"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                color="warn"
+                (click)="ondelete(element.Placement_Joining_ID)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+        <br />
+        <mat-paginator
+          class="paging"
+          [pageSize]="5"
+          [pageSizeOptions]="[5, 10, 25, 100]"
+          aria-label="Select page"
+        >
+        </mat-paginator>
+      </div>
+    </div>
+  </mat-card>
+</div>
+
+<br /><br />

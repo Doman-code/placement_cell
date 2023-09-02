@@ -1,0 +1,57 @@
+<app-header></app-header>
+<div class="container-fluid" style="border: 2px solid rgb(31, 31, 31); height: 100vh; margin-top: 15vh;">
+    <div class="row login-container" >
+        <div class="col-md-4">
+
+        </div>
+        <div class="col" >
+            <form [formGroup]="loginForm" class="login-form">
+              <mat-icon>lock</mat-icon> <h3>Login</h3>
+                <!-- username filed -->
+                <div class="example-container">
+                    <mat-form-field appearance="outline" style="width:inherit">
+                      <mat-label>User ID</mat-label>
+                      <input matInput  formControlName="username">
+                     
+                    </mat-form-field>
+                  </div>
+
+                <!-- password field -->
+                <div class="example-container">
+                  
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                      
+                      <mat-label>Password</mat-label>
+                      <input matInput  formControlName="password" type="password">
+
+                    </mat-form-field>
+                  </div>
+
+                   <!-- Captcha field  -->
+                <div class="example-container">
+                  <mat-form-field  appearance="outline" style="width: 100%;">
+                    <mat-label>Captcha</mat-label>
+                    <input matInput   formControlName="captcha">
+                   
+                  </mat-form-field>
+                </div>
+
+                    <!-- Captcha filed -->
+                   <div class="row">
+                    <div class="col-md-4"> <button mat-icon-button (click)="getCaptcha()" type="button" color="primary">
+                      <mat-icon class="mat-18">autorenew</mat-icon>
+                  </button></div>
+                    <div class="col-md-8"> <span #captchaContainer></span>
+                    </div>
+                   </div>
+                  <p style="margin-top: 15px;padding-top: 8px;"><a (click)="openedialog()" [class.cursor-pointer]="true">Forgot password?</a></p>
+                <button type="submit" class="btn btn-primary " (click)="login()">Login</button>
+                <p>New User? &nbsp; <a routerLink="/signup">SignUp</a></p>
+              </form>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
+</div>
+<!-- <router-outlet></router-outlet> -->
